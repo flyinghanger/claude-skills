@@ -26,7 +26,12 @@ allowed-tools: Bash, Read, Write, Edit, WebFetch, WebSearch, Grep, Glob
 |------|------|------|
 | 写作标准 | `/workspace/group/content-standards.md` | **每次运行必须先读取**。包含写作原则、目标受众、进化日志 |
 | 评分标准 | `references/scoring-rubric.md` | 10 维评分的详细定义和判分参考 |
+| 模板文件 | `templates/content-standards.md` | 写作标准的初始模板，首次使用时自动复制到工作区 |
 | 文章文件 | 用户指定的 `.md` 文件 | 被操作的目标文章 |
+
+## 首次使用
+
+如果工作区中不存在 `/workspace/group/content-standards.md`，自动从 `templates/content-standards.md` 复制一份到工作区，然后提示用户根据自己的写作风格和目标受众进行个性化修改。
 
 ## 执行流程
 
@@ -108,7 +113,7 @@ allowed-tools: Bash, Read, Write, Edit, WebFetch, WebSearch, Grep, Glob
 
 ## 注意事项
 
-- **标准文件必读**：每次运行任何阶段，第一步都是读取 `/workspace/group/content-standards.md`
+- **标准文件必读**：每次运行任何阶段，第一步都是读取 `/workspace/group/content-standards.md`（不存在则从 `templates/content-standards.md` 自动创建）
 - **Fact Check 不可跳过**：`full` 流程中 fact-check 不能省略，即使是小改动
 - **评分要诚实**：宁可打低不要打高，发布后的数据会检验预判
 - **修改要克制**：只改评分暴露的问题，不要顺手"优化"其他部分

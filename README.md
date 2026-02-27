@@ -6,16 +6,15 @@ Personal skill collection for Claude Code / OpenClaw.
 
 | Skill | Description | Install |
 |-------|-------------|---------|
-| [content-pipeline](./content-pipeline/) | Content production pipeline with 10-dimension scoring, fact-check, and evolving standards | `your-username/my-skills@content-pipeline` |
+| [content-pipeline](./content-pipeline/) | Content production pipeline with 10-dimension scoring, fact-check, and evolving standards | `flyinghanger/my-skills@content-pipeline` |
 
 ## Install
 
 ```bash
 # In Claude Code
-/install-skill your-username/my-skills@content-pipeline
+/install-skill flyinghanger/my-skills@content-pipeline
 ```
 
-Replace `your-username` with your GitHub username.
 
 ## Usage
 
