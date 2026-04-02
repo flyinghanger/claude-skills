@@ -1,4 +1,4 @@
+*.local.json
+*_history.json
+*-cache.json
 .DS_Store
-*.swp
-*.swo
-*~
