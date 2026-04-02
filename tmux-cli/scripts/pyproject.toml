@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tmux-cli"
+version = "1.0.0"
+description = "CLI utility to communicate with other CLI Agents or Scripts in tmux panes"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+    { name = "Prasad Chalasani" },
+    { name = "someblue (migrated)" }
+]
+keywords = ["tmux", "cli", "claude-code", "agent", "automation"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "fire>=0.5.0",
+]
+
+[project.scripts]
+tmux-cli = "tmux_cli.tmux_cli_controller:main"
+
+[project.urls]
+Homepage = "https://github.com/flyinghanger/agent-skills"
+Repository = "https://github.com/flyinghanger/agent-skills"
+
+[tool.hatch.build.targets.wheel]
+packages = ["tmux_cli"]

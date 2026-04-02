@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+# SearXNG search helper script
+# Usage: searx <query> [--category <cat>] [--limit <n>] [--engines <engine>] [--json]
+set -euo pipefail
+
+SEARXNG_URL="${SEARXNG_URL:-https://search.riba2534.cn}"
+
+usage() {
+  echo "Usage: searx <query> [--category <cat>] [--limit <n>] [--engines <engine>] [--json]"
+  echo ""
+  echo "Options:"
+  echo "  --category, -c   Search category (default: general)"
+  echo "  --limit, -l      Max results (default: 10)"
+  echo "  --engines, -e    Specific engine(s) to use"
+  echo "  --json           Output raw JSON"
+  echo ""
+  echo "Examples:"
+  echo "  searx 'machine learning'"
+  echo "  searx tokio --category cargo"
+  echo "  searx express --category packages --engines npm"
+  exit 1
+}
+
+category="general"
+limit=10
+engines=""
+json=false
+query_parts=()
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --category|-c) category="$2"; shift 2 ;;
+    --limit|-l) limit="$2"; shift 2 ;;
+    --engines|-e) engines="$2"; shift 2 ;;
+    --json) json=true; shift ;;
+    --help|-h) usage ;;
+    *) query_parts+=("$1"); shift ;;
+  esac
+done
+
+query="${query_parts[*]}"
+[[ -z "$query" ]] && usage
+
+# Build URL
+url="${SEARXNG_URL}/search?q=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$query'))")&format=json&language=zh-CN"
+[[ "$category" != "general" ]] && url="${url}&categories=${category}"
+[[ -n "$engines" ]] && url="${url}&engines=${engines}"
+
+response=$(curl -s "$url")
+
+if [[ "$json" == "true" ]]; then
+  echo "$response"
+  exit 0
+fi
+
+# Parse and display results
+python3 -c "
+import json, sys
+data = json.loads(sys.stdin.read())
+results = data.get('results', [])[:${limit}]
+total = data.get('number_of_results', 0)
+
+if not results:
+    print(f'No results found for: ${query}')
+    for s in data.get('suggestions', []):
+        print(f'  Suggestion: {s}')
+    sys.exit(0)
+
+for r in results:
+    print(f\"\033[32m{r['title']}\033[0m\")
+    print(f\"  URL: \033[34m{r['url']}\033[0m\")
+    engines = ', '.join(r.get('engines', []))
+    print(f'  Engines: {engines}')
+    content = r.get('content', '')
+    if content:
+        print(f'  {content[:200]}')
+    print()
+
+print(f\"\033[33mShowing {len(results)} of {total} results\033[0m\")
+" <<< "$response"

@@ -35,9 +35,9 @@ description: 像星之卡比一样吸收外部知识，将其内化为 Skill、R
 读取以下文件，判断哪些地方会受影响：
 
 ```
-~/.openclaw/main/AGENTS.md          # 全局工作方式
-~/.openclaw/main/SOUL.md            # 性格与风格
-~/.openclaw/main/skills/            # 列出所有现有 Skill（读 description）
+~/.claude/CLAUDE.md                  # 全局指令
+~/.claude/rules/                     # 全局规则
+~/.claude/skills/                    # 列出所有现有 Skill（读 description）
 ```
 
 根据分析结果，判断是否有现有 Skill 覆盖了 80% 以上的功能（→ 扩展而非新建）。
@@ -65,7 +65,7 @@ description: 像星之卡比一样吸收外部知识，将其内化为 Skill、R
 理由：[2-3 句说明为什么这样处理]
 
 具体操作预览：
-- 新建 ~/.openclaw/main/skills/xxx/SKILL.md
+- 新建 ~/.claude/skills/xxx/SKILL.md
 - 核心内容：[要写什么]
 
 是否执行？
@@ -76,7 +76,7 @@ description: 像星之卡比一样吸收外部知识，将其内化为 Skill、R
 用户确认后执行，不确认则放弃。
 
 创建/修改文件时：
-- 新 Skill 放在 `~/.openclaw/main/skills/<name>/SKILL.md`，遵循 frontmatter 格式（name + description）
+- 新 Skill 放在 `~/.claude/skills/<name>/SKILL.md`，遵循 frontmatter 格式（name + description）
 - description 必须写清楚触发场景，让 Agent 能自动识别何时调用
 - 规则类内容写入 AGENTS.md 的合适章节
 - 修改完成后简要汇报：改了什么文件、加了什么内容

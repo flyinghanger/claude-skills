@@ -1,0 +1,4 @@
+interface:
+  display_name: "Feishu Doc to MD"
+  short_description: "Export Feishu/Lark docs to local Markdown"
+  default_prompt: "Use $feishu-doc-to-md to export this Feishu/Lark wiki or docx to local Markdown with local assets."
