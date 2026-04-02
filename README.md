@@ -9,8 +9,6 @@ Personal skill collection for Claude Code.
 - [Writing & Diagrams](#writing--diagrams) — 写作、图表生成
 - [Skill Management](#skill-management) — Skill 的创建、安装、进化
 - [Productivity](#productivity) — 效率工具
-- [ByteDance Tools](#bytedance-tools) — 字节跳动内部工具（需内网权限）
-
 ---
 
 ## Feishu / Lark
@@ -106,26 +104,9 @@ Personal skill collection for Claude Code.
 | [think-deeper](./think-deeper/) | 提示词优化助手：将模糊想法转化为清晰可执行任务 |
 | [pua](./pua/) | 反懒惰模式：强制穷举所有可能方案后才能放弃 |
 | [post-test-cleanup](./post-test-cleanup/) | 测试完成后的扫尾清理，防止测试消息残留消耗 token |
-| [auto-local-ui-integration-tests](./auto-local-ui-integration-tests/) | 本地 UI 集成测试：启动前后端、用 Playwright 验证页面 |
 | [onchain-investigator](./onchain-investigator/) | 区块链地址链上数据调查分析（TRON / Ethereum 等） |
 | [1password](./1password/) | 配置和使用 1Password CLI：读取/注入密钥 |
 
----
-
-## ByteDance Tools
-
-> 以下技能依赖字节跳动内部服务，外部用户无法直接使用。
-
-| Skill | Description |
-|-------|-------------|
-| [aime-agent](./aime-agent/) | 通过 `bytectl` 在终端直接调用 ByteDance AIME |
-| [bytedance-find-skills](./bytedance-find-skills/) | 使用 `ai-skills` CLI 管理字节 Skill Hub 上的技能 |
-| [bytedance-install-skill](./bytedance-install-skill/) | 从字节 Skill Hub 安装 AI Agent 技能 |
-| [bytedance-publish-skill](./bytedance-publish-skill/) | 将 Skill 发布到字节 Skill Hub |
-| [byte-cloud](./byte-cloud/) | 字节跳动内部云平台自动化操作 |
-| [byte-module-analyzer](./byte-module-analyzer/) | 字节内部模块依赖分析 |
-
----
 
 ## Install
 
